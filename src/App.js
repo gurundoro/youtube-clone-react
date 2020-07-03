@@ -10,7 +10,7 @@ import { SearchBar, VideoList, VideoDetail} from './components'
 class App extends React.Component {
 
     state = {
-        video: [],
+        videos: [],
         selectedVideo: null
     }
 
@@ -25,11 +25,11 @@ class App extends React.Component {
             }
         })
 
-       this.setState({ videos: response.data.items, selectedVideo: response.date.items[0]})
+       this.setState({ videos: response.data.items, selectedVideo: response.data.items[0]})
     }
 
     render(){
-        const { selectedVideo } = this.state
+        const { selectedVideo, videos } = this.state
         return(
             <Grid justofy="center" container spacing={10}>
                 <Grid item xs={12}>
@@ -41,7 +41,7 @@ class App extends React.Component {
                          <VideoDetail video={selectedVideo} />
                       </Grid>
                       <Grid item xs={4}>
-                          {/* Video List */}
+                          <VideoList videos={videos} />
                       </Grid>
                     </Grid>
                 </Grid>
