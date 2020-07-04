@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
 import youtube from './api/youtube'
 import { SearchBar, VideoList, VideoDetail} from './components'
@@ -7,6 +7,10 @@ const App = () => {
     
     const [videos, setVideos ] = useState([])
     const [selectedVideo, setSelectedVideo] = useState(null)
+
+    useEffect(() => {
+        handleSubmit('nature is wild')
+    },[null])
 
     const handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search', {
